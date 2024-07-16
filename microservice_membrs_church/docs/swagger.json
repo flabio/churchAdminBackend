@@ -1,0 +1,35 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is an Order Api just for young people",
+        "title": "Order Api",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+     
+        "/api/rol/": {
+            "get": {
+                "description": "Getting Order by Code in detail",
+                "rols": [
+                    "application/json"
+                ],
+            
+                "tags": [
+                    "Rol"
+                ],
+                "summary": "Getting Order by Code",
+      
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
