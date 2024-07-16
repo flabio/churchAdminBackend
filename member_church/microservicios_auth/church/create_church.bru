@@ -1,0 +1,21 @@
+meta {
+  name: create_church
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/church
+  body: json
+  auth: none
+}
+
+body:json {
+   {
+        "name": "La Vara de Direreos ff",
+        "phone": "43563464343",
+        "email": "tatstsd@gmail.com",
+        "address": "Cr 2332",
+        "active": true
+      }
+}

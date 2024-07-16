@@ -1,0 +1,18 @@
+meta {
+  name: update_rol
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/api/rol/8
+  body: json
+  auth: none
+}
+
+body:json {
+     {
+        "name":"ccc",
+        "active": true
+      }
+}

@@ -1,0 +1,19 @@
+meta {
+  name: create_ministerial
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/ministerial
+  body: json
+  auth: none
+}
+
+body:json {
+     {
+        "name":"dddd",
+  
+        "active": true
+      }
+}

@@ -1,0 +1,18 @@
+meta {
+  name: remove_rol
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8080/api/rol/7
+  body: json
+  auth: none
+}
+
+body:json {
+     {
+        "name":"Portugal",
+        "active": true
+      }
+}

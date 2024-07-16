@@ -1,0 +1,18 @@
+meta {
+  name: create_team_pesca
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/team_pesca/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"Proclamación",
+    "active":true
+  }
+}

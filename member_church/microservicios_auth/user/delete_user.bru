@@ -1,0 +1,57 @@
+meta {
+  name: delete_user
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8080/api/user/6
+  body: json
+  auth: none
+}
+
+body:json {
+   {
+     "id":7,
+        "first_name": "Felipe",
+        "last_name": "Hurtado Sanclemente",
+        "identification": "11111111",
+        "type_identification": "Cc",
+        "birthdate": "1987-01-02",
+        "placeofbirth": "Bogota",
+        "address": "Cr 120",
+        "phone": "3232891714",
+        "cellphone": "3232891714",
+        "email": "felipehs@gmail.com",
+        "neighborhood": "La Faena",
+        "locality": "Engativa",
+        "socioeconomic": 1,
+        "rh": "o+",
+        "profession": "Ingeniero de Software",
+        "company": "BetelSoft",
+        "position": "Tech Leader ",
+        "civil_status": "Casado",
+        "leaders_name": "Jose Diaz",
+        "conversion_date": "",
+        "who_invited_him": "",
+        "century_attended": true,
+        "church_name": "Alianza Cristiana",
+        "meetings_date": "",
+        "baptism_date": "",
+        "your_spouse_name": "",
+        "spouse_member_church": false,
+        "date_marriage": "",
+        "parents_name": "",
+        "is_member_parent": false,
+        "childrena_name": "",
+        "allergy": false,
+        "authorize": true,
+        "username": "felipehs",
+        "password": "12345678",
+        "church_id": 1,
+       
+        "rol_id": 1,
+       
+        "team_pesca_id": 1
+        }
+}
