@@ -47,7 +47,7 @@ func (db *OpenConnection) GetFindUserByEmail(email string) (entities.User, error
 func (db *OpenConnection) GetFindUserByIdentification(identification string) (entities.User, error) {
 	var user entities.User
 	db.mux.Lock()
-	err := db.connection.Where("identification=?", identification).First(&user).Error
+	err := db.connection.Where("Identication=?", identification).First(&user).Error
 	defer database.Closedb()
 	defer db.mux.Unlock()
 	return user, err

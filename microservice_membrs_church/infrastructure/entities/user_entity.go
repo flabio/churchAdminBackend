@@ -41,9 +41,9 @@ type User struct {
 	Password           string    `gorm:"type:string"`
 	CreatedAt          time.Time `gorm:"<-:created_at" `
 	ChurchId           uint64    `gorm:"null" json:"church_id"`
-	Church             Church    `gorm:"foreignKey:ChurchId  constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"church"`
+	Church             Church    `gorm:"foreignKey:ChurchId;constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"church"`
 	RolId              uint      `gorm:"null" json:"rol_id"`
-	Rol                Rol       `gorm:"foreignKey:RolId  constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"rol"`
+	Rol                Rol       `gorm:"foreignKey:RolId;constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"rol"`
 	TeamPescaId        uint      `gorm:"null" json:"team_pesca_id"`
-	TeamPesca          TeamPesca `gorm:"foreignKey:TeamPescaId  constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"team_pesca"`
+	TeamPesca          TeamPesca `gorm:"foreignKey:TeamPescaId;constraint:onUpdate:CASCADE,onDelete:CASCADE" json:"team_pesca"`
 }

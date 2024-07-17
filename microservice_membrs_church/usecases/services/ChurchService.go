@@ -1,11 +1,11 @@
 package services
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gookit/validate"
 	"member_church.com/core/interfaces"
 	"member_church.com/core/repositories"
 	"member_church.com/infrastructure/entities"
@@ -39,6 +39,7 @@ func (s *churchService) GetChurchFindAll(c *fiber.Ctx) error {
 }
 func (s *churchService) GetChurchFindById(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params(utils.ID))
+	fmt.Println(c)
 	result, err := s.IChurch.GetChurchFindById(uint(id))
 	if result.Id == 0 {
 		return c.Status(http.StatusNotFound).JSON(fiber.Map{
@@ -138,13 +139,17 @@ func validateChurch(id uint, churchDto *dto.ChurchDTO, s *churchService, c *fibe
 	if err := c.BodyParser(churchDto); err != nil {
 		return err.Error()
 	}
-	v := validate.Struct(churchDto)
-	if !v.Validate() {
-		return v.Errors.Error()
-	}
+	// v := validate.Struct(churchDto)
+	// if !v.Validate() {
+	// 	return v.Errors.Error()
+	// }
 	existName, _ := s.IChurch.GetChurchFindByName(id, churchDto.Name)
 	if existName {
 		return utils.NAME_ALREADY_EXIST
+	}
+	existEmail, _ := s.IChurch.GetChurchFindByEmail(id, churchDto.Email)
+	if existEmail {
+		return utils.EMAIL_ALREADY_EXIST
 	}
 	return ""
 }

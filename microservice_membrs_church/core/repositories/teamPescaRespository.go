@@ -66,10 +66,13 @@ func (db *OpenConnection) GetTeamPescaFindByName(id uint, name string) (bool, er
 	db.mux.Lock()
 	var teamPesca entities.TeamPesca
 	query := db.connection.Where("name=?", name)
-	if id > 0 {
-		query = query.Where("id=?", id)
+
+	if id>0 {
+		query = query.Where("id<>?",id).First(&teamPesca)
+	}else{
+		query= query.First(&teamPesca)
 	}
-	err := query.First(&teamPesca).Error
+	err := query.Error
 	defer db.mux.Unlock()
 	defer database.Closedb()
 	if err == nil {

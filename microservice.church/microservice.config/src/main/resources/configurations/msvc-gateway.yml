@@ -16,26 +16,26 @@ spring:
           enabled: true
       routes:
         - id: rol
-          uri: http://localhost:3000
+          uri: http://localhost:8084
           predicates:
-            - Path=/api/rol**
+            - Path=/api/rol**,
 
         - id: ministerial
-          uri: http://localhost:3000
+          uri: http://localhost:8084
           predicates:
-            - Path=/api/ministerial**
+            - Path=/api/ministerial**,
 
-        - id: teamPesca
-          uri: http://localhost:3000
+        - id: teampesca
+          uri: http://localhost:8084
           predicates:
-            - Path=/api/team_pesca**
+            - Path=/api/teampesca**
         - id: church
-          uri: http://localhost:3000
+          uri: http://localhost:8084
           predicates:
-            - Path=/api/church**
+            - Path=/api/church**,
 
         - id: user
-          uri: http://localhost:3000
+          uri: http://localhost:8084
           predicates:
             - Path=/api/user**
 logging:

@@ -32,7 +32,7 @@ func (db *OpenConnection) GetChurchFindAll() ([]entities.Church, error) {
 func (db *OpenConnection) GetChurchFindById(id uint) (entities.Church, error) {
 	var entities entities.Church
 	db.mux.Lock()
-	err := db.connection.Where("id=?").Find(&entities).Error
+	err := db.connection.Where("id=?",id).Find(&entities).Error
 	defer database.Closedb()
 	defer db.mux.Unlock()
 	return entities, err
@@ -42,7 +42,7 @@ func (db *OpenConnection) GetChurchFindByName(id uint, name string) (bool, error
 	db.mux.Lock()
 	query := db.connection.Where("name=?", name)
 	if id > 0 {
-		query = query.Where("id=?", id)
+		query = query.Where("id<>?", id)
 	}
 	err := query.First(&entities).Error
 	defer database.Closedb()
@@ -52,6 +52,24 @@ func (db *OpenConnection) GetChurchFindByName(id uint, name string) (bool, error
 	}
 	return true, err
 }
+
+func (db *OpenConnection) GetChurchFindByEmail(id uint, email string) (bool, error) {
+	var entities entities.Church
+	db.mux.Lock()
+	query := db.connection.Where("email=?", email)
+	if id > 0 {
+		query = query.Where("id<>?", id)
+	}
+	err := query.First(&entities).Error
+	defer database.Closedb()
+	defer db.mux.Unlock()
+	if err != nil {
+		return false, err
+	}
+	return true, err
+}
+
+
 func (db *OpenConnection) CreateChurch(entities entities.Church) (entities.Church, error) {
 	db.mux.Lock()
 	err := db.connection.Create(&entities).Error

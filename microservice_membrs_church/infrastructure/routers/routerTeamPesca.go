@@ -10,7 +10,7 @@ var (
 )
 
 func NewTeamPescaRouter(app *fiber.App) {
-	apiTeamPesca := app.Group("/api/team_pesca")
+	apiTeamPesca := app.Group("/api/teampesca")
 	apiTeamPesca.Get("/", func(c *fiber.Ctx) error {
 		return teamPescaController.GetTeamPescaFindAll(c)
 	})
